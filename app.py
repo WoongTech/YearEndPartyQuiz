@@ -71,7 +71,7 @@ class TextDisplay:
 class TextDisplayManager:
     def __init__(self):
         try:
-            with open('../quiz_data.json', 'r', encoding='utf-8') as f:
+            with open('quiz_data.json', 'r', encoding='utf-8') as f:
                 data = json.load(f)
                 self.original_texts = data['questions']
                 # Create a shuffled copy of the questions
