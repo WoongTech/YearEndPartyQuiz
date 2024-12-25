@@ -8,8 +8,20 @@ import json
 import random
 
 app = Flask(__name__)
-CORS(app)
-socketio = SocketIO(app, cors_allowed_origins="*")
+CORS(app, resources={
+    r"/*": {
+        "origins": "*",
+        "allow_headers": ["Content-Type"],
+        "methods": ["GET", "POST", "OPTIONS"]
+    }
+})
+
+socketio = SocketIO(app, 
+    cors_allowed_origins="*",
+    ping_timeout=60,
+    ping_interval=25,
+    async_mode='eventlet'  # eventlet 모드 사용
+)
 
 class TextDisplay:
     def __init__(self, category: str, text: str, answer: str):
@@ -204,6 +216,9 @@ def process_events(text_display):
             pass
 
 if __name__ == '__main__':
+    import eventlet
+    eventlet.monkey_patch()
+    
     port = 5000
     host = '0.0.0.0'
     
