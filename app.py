@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from flask_socketio import SocketIO, emit
+from flask_cors import CORS
 import time
 import threading
 import queue
@@ -7,6 +8,7 @@ import json
 import random
 
 app = Flask(__name__)
+CORS(app)
 socketio = SocketIO(app, cors_allowed_origins="*")
 
 class TextDisplay:
@@ -215,4 +217,5 @@ if __name__ == '__main__':
     socketio.run(app, 
                 host=host, 
                 port=port, 
-                debug=False) 
+                debug=False,
+                allow_unsafe_werkzeug=True)
