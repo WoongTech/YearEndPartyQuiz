@@ -2,7 +2,6 @@
 
 연말 파티를 위한 인터랙티브 퀴즈 게임입니다. 문제가 타자기처럼 하나씩 나타나며, 참가자들이 함께 답을 맞추는 방식으로 진행됩니다.
 
-웹에서도 사용 가능합니다. https://runningman-relay-quiz-game-8f0d96f722ee.herokuapp.com/
 
 ![Quiz Game Preview](preview.gif)
 
